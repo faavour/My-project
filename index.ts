@@ -12,6 +12,3 @@ const cluster = new digitalocean.KubernetesCluster("my-pulumi-cluster", {
         nodeCount: 2,
     },
 });
-
-// This exports the kubeconfig for the cluster
-export const kubeconfig = cluster.kubeconfig;
