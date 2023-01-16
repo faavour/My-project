@@ -24,3 +24,6 @@ const service = new k8s.core.v1.Service("example-app-svc", {
         type: "ClusterIP",
     },
 });
+
+export const deploymentName = deployment.metadata.name;
+export const serviceName = service.metadata.name;
