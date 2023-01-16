@@ -16,3 +16,11 @@ const deployment = new k8s.apps.v1.Deployment("example-app", {
     },
 });
 
+const service = new k8s.core.v1.Service("example-app-svc", {
+    metadata: { labels: { app: "example-app" } },
+    spec: {
+        selector: { app: "example-app" },
+        ports: [{ port: 80, targetPort: 8080 }],
+        type: "ClusterIP",
+    },
+});
