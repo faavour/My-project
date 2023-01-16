@@ -1,5 +1,5 @@
-const pulumi = require("@pulumi/pulumi");
-const digitalocean = require("@pulumi/digitalocean");
+import * as pulumi from "@pulumi/pulumi";
+import * as digitalocean from "@pulumi/digitalocean";
 
 // This Create a new DigitalOcean Kubernetes cluster
 const cluster = new digitalocean.KubernetesCluster("my-pulumi-cluster", {
@@ -13,4 +13,5 @@ const cluster = new digitalocean.KubernetesCluster("my-pulumi-cluster", {
 });
 
 // This exports the kubeconfig for the cluster
-exports.kubeconfig = cluster.kubeconfig;
+export const kubeconfig = cluster.kubeconfig;
+
