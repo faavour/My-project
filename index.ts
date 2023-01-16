@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as digitalocean from "@pulumi/digitalocean";
+import * as kubernetes from "@pulumi/kubernetes";
 
 // This Create a new DigitalOcean Kubernetes cluster
 const cluster = new digitalocean.KubernetesCluster("my-pulumi-cluster", {
@@ -14,4 +15,3 @@ const cluster = new digitalocean.KubernetesCluster("my-pulumi-cluster", {
 
 // This exports the kubeconfig for the cluster
 export const kubeconfig = cluster.kubeconfig;
-
