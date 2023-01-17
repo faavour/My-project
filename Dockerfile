@@ -1,9 +1,11 @@
-FROM node:10-alpine
+FROM python:3.9-slim-buster
 
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
+COPY app.py /app/
 
-EXPOSE 3000
-CMD ["npm", "start"]
+WORKDIR /app/
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["flask", "run", "--host=0.0.0.0"]
