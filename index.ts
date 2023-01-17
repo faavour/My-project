@@ -15,6 +15,8 @@ const cluster = new digitalocean.KubernetesCluster("do-cluster", {
 
 export const kubeconfig = cluster.kubeConfigs[0].rawConfig;
 
+// This will create a kubernetes deployment
+
 const provider = new kubernetes.Provider("do-k8s", { kubeconfig })
 
 const appLabels = { "app": "app-nginx" };
@@ -33,6 +35,8 @@ const app = new kubernetes.apps.v1.Deployment("do-app-dep", {
         },
     },
 }, { provider });
+
+
 const appService = new kubernetes.core.v1.Service("do-app-svc", {
     spec: {
         type: "LoadBalancer",
