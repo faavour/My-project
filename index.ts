@@ -3,12 +3,14 @@ import * as digitalocean from "@pulumi/digitalocean";
 import * as kubernetes from "@pulumi/kubernetes";
 
 // This Create a new DigitalOcean Kubernetes cluster
-const cluster = new digitalocean.KubernetesCluster("my-pulumi-cluster", {
-    region: "nyc1",
-    version: "1.19",
+const cluster = new digitalocean.KubernetesCluster("do-cluster", {
+    region: digitalocean.Region.NYC1,
+    version: "latest",
     nodePool: {
-        name: "pulumi-project",
-        size: "s-1vcpu-2gb",
-        nodeCount: 2,
+        name: "default",
+        size: digitalocean.DropletSlug.DropletS2VCPU2GB,
+        nodeCount: 3,
     },
 });
+
+export const kubeconfig = cluster.kubeConfigs[0].rawConfig;
