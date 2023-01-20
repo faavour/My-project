@@ -52,8 +52,13 @@ jobs:
         echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
         sudo apt-get update
         sudo apt-get install -y kubectl
+    
+    - name: Deploy to cluster
+      run: |
+        kubectl set image deployment/backend backend=my-backend-image
+        kubectl set image deployment/frontend frontend=my-frontend-image
 
-        
+
 
 
 
