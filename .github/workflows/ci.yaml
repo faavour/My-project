@@ -31,9 +31,28 @@ jobs:
         docker push faavour/my-backend-image:v1
         docker push faavour/my-frontend-image:v1
 
+
+# This automatically deploys to Kubernetes
   deploy:
     runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    
+    - name: Configure kubectl
+      run: |
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > kubeconfig.yaml
+        export KUBECONFIG=kubeconfig.yaml
+
+    - name: Install kubectl
+      run: |
+        sudo apt-get update && sudo apt-get install -y apt-transport-https
+        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+        sudo apt-get update
+        sudo apt-get install -y kubectl
+
+
 
 
