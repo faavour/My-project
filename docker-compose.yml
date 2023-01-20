@@ -1,17 +1,17 @@
 version: '3'
 services:
   backend:
-    image: faavour/my-backend-image:latest
+    image: faavour/my-backend-image:v1
     ports:
-      - "3000:3000"
+      - "3100:3100"
     depends_on:
       - db
     environment:
       - MONGO_URL=mongodb://db:27017/todo
   frontend:
-    image: faavour/my-frontend-image:latest
+    image: faavour/my-frontend-image:v1
     ports:
-      - "3001:3001"
+      - "3000:3000"
     depends_on:
       - backend
   db:
