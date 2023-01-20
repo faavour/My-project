@@ -2,7 +2,7 @@ version: '3'
 services:
   backend:
     build:
-      context: ./backend
+      context: ./Backend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
@@ -10,7 +10,17 @@ services:
       - db
     environment:
       - MONGO_URL=mongodb://db:27017/todo
-   frontend:
+  frontend:
     build:
-      context: ./frontend
+      context: ./Frontend
       dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+   db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    
+    
