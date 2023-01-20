@@ -6,9 +6,9 @@ metadata:
   name: backend
 spec:
   ports:
-  - name: "3000"
-    port: 3000
+  - name: "3100"
+    port: 3100
     protocol: TCP
-    targetPort: 3000
+    targetPort: 3100
   selector:
     service: backend
