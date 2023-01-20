@@ -1,9 +1,7 @@
 version: '3'
 services:
   backend:
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile
+    image: faavour/my-backend-image:latest
     ports:
       - "3000:3000"
     depends_on:
@@ -11,9 +9,7 @@ services:
     environment:
       - MONGO_URL=mongodb://db:27017/todo
   frontend:
-    build:
-      context: ./Frontend
-      dockerfile: Dockerfile
+    image: faavour/my-frontend-image:latest
     ports:
       - "3000:3000"
     depends_on:
