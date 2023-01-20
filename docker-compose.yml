@@ -10,3 +10,7 @@ services:
       - db
     environment:
       - MONGO_URL=mongodb://db:27017/todo
+   frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
