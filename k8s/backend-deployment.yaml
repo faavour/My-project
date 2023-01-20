@@ -18,7 +18,7 @@ spec:
       - image: faavour/my-backend-image:v1
         name: backend
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
         imagePullPolicy: Always  
         resources:
           requests:
