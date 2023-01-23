@@ -20,14 +20,15 @@ jobs:
         
     - name: Build image
       run: |
-        docker build -t faavour/my-backend-image:v1 -f ./Backend/Dockerfile ./Backend
-        docker build -t faavour/my-frontend-image:v1 -f ./Frontend/Dockerfile ./Frontend
+        docker build -t faavour/my-backend-image:v1 ./Backend/Dockerfile 
+        docker build -t faavour/my-frontend-image:v1 -f ./Frontend/Dockerfile 
 
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Push image to Docker Hub
       run: |
+        sudo apt-get update
         docker push faavour/my-backend-image:v1
         docker push faavour/my-frontend-image:v1
 
