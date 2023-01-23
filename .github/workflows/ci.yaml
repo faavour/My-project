@@ -20,7 +20,7 @@ jobs:
         
     - name: Build image
       run: |
-        docker build -t faavour/my-backend-image:v1 ./Backend/Dockerfile 
+        docker build -t faavour/my-backend-image:v1 ./Backend/ 
         docker build -t faavour/my-frontend-image:v1 ./Frontend/ 
 
     - name: Login to Docker Hub
