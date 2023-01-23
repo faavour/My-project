@@ -24,9 +24,12 @@
       "react-app/jest"
     ]
   },
+  "description": "filling out this field to avoid warnings",
+  "readme": "not publishing",
+  "license": "not publishing",
   "repository": {
     "type": "git",
-    "url": "git://github.com/faavour/repository.git"
+    "url": "git://github.com/faavour//Pulumi-project.git"
   },
   "browserslist": {
     "production": [
