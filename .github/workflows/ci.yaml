@@ -28,7 +28,6 @@ jobs:
 
     - name: Push image to Docker Hub
       run: |
-        sudo apt-get update
         docker push faavour/my-backend-image:v1
         docker push faavour/my-frontend-image:v1
 
