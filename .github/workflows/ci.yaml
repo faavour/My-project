@@ -45,8 +45,8 @@ jobs:
     - name: Configure kubectl
       run: |
         cat "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig.yaml
-        cat kubeconfig.yaml
-        export KUBECONFIG=kubeconfig.yaml
+        export KUBECONFIG=kubeconfig.yaml && cat kubeconfig.yaml
+        
 
     - name: Install kubectl
       run: |
@@ -56,10 +56,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y kubectl
     
-    - name: Deploy to cluster
-      run: |
-        kubectl get deployment/backend 
-        kubectl get deployment/frontend 
+    # - name: Deploy to cluster
+    #   run: |
+    #     kubectl get deployment/backend 
+    #     kubectl get deployment/frontend 
 
 
 
